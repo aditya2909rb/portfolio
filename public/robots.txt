@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Allow: /#about
+
+Sitemap: https://adityaroybardhan.gamer.gd/sitemap.xml
