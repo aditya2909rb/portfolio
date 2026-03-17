@@ -10,8 +10,13 @@ This project is configured to deploy automatically to GitHub Pages using GitHub 
 2. Go to **Settings** > **Pages**.
 3. Under **Build and deployment** > **Source**, select **GitHub Actions**.
 
-### 2. Custom Domain & DNS Setup (adityaroybardhan.me)
-To fix the `InvalidDNSError`, you must configure your domain's DNS records at your domain registrar (e.g., Namecheap, GoDaddy):
+### 2. Default GitHub Pages URL
+The site is configured to publish to the default project Pages URL:
+
+- `https://aditya2909rb.github.io/portfolio/`
+
+### 3. Optional Custom Domain Setup
+If you later want to use a custom domain, configure its DNS first and then add the domain in GitHub Pages settings:
 
 **A Records (for adityaroybardhan.me):**
 Add four `A` records pointing to these IP addresses:
