@@ -19,7 +19,6 @@ import { Skills } from './components/Skills';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { ChevronUp } from 'lucide-react';
-import { RESUME_DOWNLOAD_NAME, RESUME_FILE } from './lib/resume';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -82,17 +81,6 @@ export default function App() {
     lenisRef.current?.scrollTo(0, { duration: 1.5 });
   };
 
-  const handleOpenResume = () => {
-    setIsResumeOpen(true);
-
-    const downloadLink = document.createElement('a');
-    downloadLink.href = RESUME_FILE;
-    downloadLink.download = RESUME_DOWNLOAD_NAME;
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
-  };
-
   return (
     <div className="bg-black min-h-screen text-white selection:bg-[#00d4ff]/30 selection:text-[#00d4ff]">
       <CustomCursor />
@@ -117,12 +105,12 @@ export default function App() {
               className="relative no-print"
             >
               <Background3D />
-              <Navbar onOpenResume={handleOpenResume} />
-              <Hero onOpenResume={handleOpenResume} />
-              <About />
-              <Experience />
+              <Navbar onOpenResume={() => setIsResumeOpen(true)} />
+              <Hero onOpenResume={() => setIsResumeOpen(true)} />
               <Projects />
               <Skills />
+              <Experience />
+              <About />
               <Contact />
               <Footer />
               
@@ -130,12 +118,7 @@ export default function App() {
               <div className="fixed inset-0 pointer-events-none z-[9998] opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]" />
             </motion.main>
 
-            <ResumeModal
-              isOpen={isResumeOpen}
-              onClose={() => setIsResumeOpen(false)}
-              resumeUrl={RESUME_FILE}
-              downloadName={RESUME_DOWNLOAD_NAME}
-            />
+            <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
 
             {/* Scroll to Top Button */}
             <AnimatePresence>

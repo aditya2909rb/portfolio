@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Allow: /#about
 
-Sitemap: https://aditya2909rb.github.io/portfolio/sitemap.xml
+Sitemap: https://adityaroybardhan.gamer.gd/sitemap.xml

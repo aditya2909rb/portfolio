@@ -12,24 +12,24 @@ interface SearchResult {
 
 const searchData: SearchResult[] = [
   // Projects
-  { title: 'ASHA — Alerting Satellite Heat Analytics', type: 'Project', href: '#projects', description: 'Real-time satellite fire detection system' },
-  { title: 'Aadhaar Pravah — Identity Fraud Detection', type: 'Project', href: '#projects', description: 'Real-time data flow analyzer for Aadhaar-scale identity streams' },
-  { title: 'Satellite Imagery for Global Change Detection', type: 'Project', href: '#projects', description: 'Pixel-level segmentation model for environmental changes' },
-  { title: 'Real-Time Demand Forecasting & Price Optimization', type: 'Project', href: '#projects', description: 'High-frequency demand forecasting for ride requests' },
-  { title: 'J.A.R.V.I.S. — Multimodal AI Assistant', type: 'Project', href: '#projects', description: 'End-to-end multimodal AI assistant' },
-  { title: 'Siddhant — Ancient Indian Yantra Reconstruction Engine', type: 'Project', href: '#projects', description: 'Geometric computation engine for ancient Indian astronomical Yantras' },
-  // About
-  { title: 'About Aditya Roy Bardhan', type: 'Experience', href: '#about', description: 'ML Engineer & AI Systems Specialist profile' },
+  { title: 'ASHA — Alerting Satellite Heat Analytics', type: 'Project', href: '#projects', description: 'Real-time satellite fire detection and heat analytics' },
+  { title: 'OncoSML — Cancer Vaccine Workflow Research', type: 'Project', href: '#projects', description: 'Computational cancer-vaccine workflow research and self-maintaining ML' },
+  { title: 'Satellite Change Detection', type: 'Project', href: '#projects', description: 'Pixel-level segmentation for smoke plumes and environmental hazard detection' },
+  { title: 'Demand Forecasting & Dynamic Pricing', type: 'Project', href: '#projects', description: 'Real-time demand forecasting and sub-100ms dynamic pricing' },
+  { title: 'Siddhant — Ancient Indian Yantra Reconstruction', type: 'Project', href: '#projects', description: 'SIH 2025 Grand Finalist 3D mathematical reconstruction engine' },
+  { title: 'Agentic AI Safety Evaluation', type: 'Project', href: '#projects', description: 'Empirical safety study of local LLM agent execution under sandboxing' },
+  { title: 'Aadhaar Pravah — Identity Fraud Detection', type: 'Project', href: '#projects', description: 'Stream processing analyzer for large-scale identity verification' },
   // Experience
-  { title: 'SK TELECOM', type: 'Experience', href: '#experience', description: 'ML Training Engineer (Contract)' },
-  { title: 'INDEPENDENT CYBERSECURITY ADVISOR', type: 'Experience', href: '#experience', description: 'Freelance Security Consultant' },
-  { title: 'RIOT GAMES', type: 'Experience', href: '#experience', description: 'Technical Operations' },
+  { title: 'Distributed Model Training Engagement', type: 'Experience', href: '#experience', description: 'ML Consultant / Contributor for 3D parallelism and data curation' },
+  { title: 'Confidential Cybersecurity Engagements', type: 'Experience', href: '#experience', description: 'Authorized security assessments and threat modeling under NDA' },
+  { title: 'Gaming Infrastructure Support', type: 'Experience', href: '#experience', description: 'Technical operations, observability, and server latency monitoring' },
+  // Education & Hackathons
+  { title: 'IIT Guwahati — B.Sc. (Hons.) Data Science & AI', type: 'Experience', href: '#about', description: 'Undergraduate studies in Data Science & Artificial Intelligence' },
+  { title: 'Smart India Hackathon 2025 — Grand Finalist', type: 'Experience', href: '#about', description: 'National hackathon grand finalist recognition for Siddhant' },
   // Skills
-  { title: 'LLM Training', type: 'Skill', href: '#skills', description: 'Megatron-LM, DeepSpeed ZeRO-3, FlashAttention-2' },
-  { title: 'ML / AI', type: 'Skill', href: '#skills', description: 'PyTorch, Transformers, XGBoost, LSTM' },
-  { title: 'Data Engineering', type: 'Skill', href: '#skills', description: 'Pipeline Design, Annotation Quality, Feature Engineering' },
-  { title: 'Security', type: 'Skill', href: '#skills', description: 'API Penetration Testing, Threat Modeling' },
-  { title: 'Systems', type: 'Skill', href: '#skills', description: 'Python, C++, CUDA, Java, SQL' },
+  { title: 'Core Proficiency (Interview Ready)', type: 'Skill', href: '#skills', description: 'Python, PyTorch, SQL, Pandas, NumPy, Computer Vision, Machine Learning' },
+  { title: 'Working Knowledge', type: 'Skill', href: '#skills', description: 'JavaScript, TypeScript, C++, TensorFlow, ONNX, Docker, GitHub Actions, Linux' },
+  { title: 'Exploring & Specializing', type: 'Skill', href: '#skills', description: 'LLMs, RAG, Agentic AI, Geospatial AI, Distributed Training' },
 ];
 
 export const CommandPalette = () => {

@@ -55,8 +55,8 @@ export const Contact = () => {
               <div className="h-1 w-20 bg-[#00d4ff]" />
             </div>
             
-            <p className="text-white/60 text-lg mb-12 max-w-md">
-              Interested in hyperscale LLM training, AI systems, or cybersecurity? I'm always open to discussing frontier technology and high-impact opportunities.
+            <p className="text-white/60 text-base mb-10 max-w-md leading-relaxed">
+              Interested in AI systems, computer vision, data engineering, or research collaborations? I am actively seeking engineering internships and high-impact technical opportunities.
             </p>
 
             <div className="space-y-8">

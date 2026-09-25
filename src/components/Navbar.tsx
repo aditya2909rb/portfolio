@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Github, Linkedin, Instagram, Code2, Database } from 'lucide-react';
+import { Menu, X, Download, FileText } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { CommandPalette } from './CommandPalette';
 
 const navItems = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Experience', href: '#experience' },
   { name: 'Projects', href: '#projects' },
   { name: 'Skills', href: '#skills' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Education', href: '#about' },
   { name: 'Contact', href: '#contact' },
-  { name: 'Resume', href: '#resume', isModal: true },
 ];
 
 export const Navbar = ({ onOpenResume }: { onOpenResume: () => void }) => {
@@ -19,101 +17,127 @@ export const Navbar = ({ onOpenResume }: { onOpenResume: () => void }) => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollTo = (href: string) => {
+    setIsOpen(false);
+    const el = document.querySelector(href);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <nav
+    <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b',
-        scrolled 
-          ? 'bg-black/60 backdrop-blur-md border-white/10 py-4' 
-          : 'bg-transparent border-transparent py-6'
+        scrolled
+          ? 'bg-black/80 backdrop-blur-md border-white/10 py-3.5'
+          : 'bg-transparent border-transparent py-5'
       )}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center gap-12">
-          <motion.a
-            href="#home"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="text-[#00d4ff] font-mono font-bold text-xl tracking-tighter flex items-center gap-2"
-          >
-            <div className="w-8 h-8 rounded-lg bg-[#00d4ff]/10 border border-[#00d4ff]/30 flex items-center justify-center">
-              <Code2 size={18} />
-            </div>
-            A.R.B.
-          </motion.a>
+        {/* Zone 1: Single text element wordmark */}
+        <a
+          href="#home"
+          className="text-base font-semibold tracking-tight text-white hover:text-[#00d4ff] transition-colors"
+        >
+          Aditya Roy Bardhan
+        </a>
 
-          <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item, i) => (
-              <motion.button
-                key={item.name}
-                onClick={() => {
-                  if (item.isModal) {
-                    onOpenResume();
-                  } else {
-                    const el = document.querySelector(item.href);
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="text-sm font-medium text-white/70 hover:text-[#00d4ff] transition-colors"
-              >
-                {item.name}
-              </motion.button>
-            ))}
-          </div>
-        </div>
+        {/* Zone 2: 4-6 clean text navigation links */}
+        <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-white/70">
+          {navItems.map((item) => (
+            <button
+              key={item.name}
+              onClick={() => scrollTo(item.href)}
+              className="hover:text-white transition-colors cursor-pointer"
+            >
+              {item.name}
+            </button>
+          ))}
+        </nav>
 
-        <div className="flex items-center gap-6">
+        {/* Zone 3: 1-2 primary actions */}
+        <div className="flex items-center gap-3">
           <CommandPalette />
-          
-          {/* Mobile Toggle */}
+
           <button
-            className="md:hidden text-white"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={onOpenResume}
+            className="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold text-white/90 bg-white/10 hover:bg-white/15 border border-white/15 rounded-lg transition-colors cursor-pointer"
           >
-            {isOpen ? <X /> : <Menu />}
+            <FileText size={13} />
+            <span>Resume</span>
+          </button>
+
+          <a
+            href="resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            download="Aditya_Roy_Bardhan_Resume.pdf"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-black bg-[#00d4ff] hover:bg-[#33ddff] rounded-lg transition-colors shadow-sm"
+          >
+            <Download size={13} />
+            <span>CV</span>
+          </a>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className="md:hidden text-white/80 hover:text-white p-1"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-black border-b border-white/10 overflow-hidden"
+            className="md:hidden bg-black/95 border-b border-white/10 overflow-hidden backdrop-blur-xl"
           >
-            <div className="px-6 py-8 flex flex-col gap-6">
+            <div className="px-6 py-6 flex flex-col gap-4">
               {navItems.map((item) => (
                 <button
                   key={item.name}
-                  onClick={() => {
-                    setIsOpen(false);
-                    if (item.isModal) {
-                      onOpenResume();
-                    } else {
-                      const el = document.querySelector(item.href);
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                  className="text-lg font-medium text-left text-white/70 hover:text-[#00d4ff]"
+                  onClick={() => scrollTo(item.href)}
+                  className="text-left text-base font-medium text-white/80 hover:text-[#00d4ff] py-1 cursor-pointer"
                 >
                   {item.name}
                 </button>
               ))}
+              <div className="pt-4 border-t border-white/10 flex gap-3">
+                <button
+                  onClick={() => {
+                    setIsOpen(false);
+                    onOpenResume();
+                  }}
+                  className="flex-1 py-2 text-xs font-medium text-center text-white bg-white/10 rounded-lg"
+                >
+                  View Full Resume
+                </button>
+                <a
+                  href="resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="Aditya_Roy_Bardhan_Resume.pdf"
+                  className="flex-1 py-2 text-xs font-medium text-center text-black bg-[#00d4ff] rounded-lg"
+                >
+                  Download PDF
+                </a>
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </header>
   );
 };
