@@ -30,7 +30,7 @@ export const allProjects: ProjectItem[] = [
     id: 'asha',
     title: 'ASHA — Alerting Satellite Heat Analytics',
     category: 'Computer Vision',
-    tagline: 'Satellite-based fire detection & heat analytics',
+    tagline: 'Satellite-based fire detection & geospatial heat analytics',
     isFeatured: true,
     image: ashaImg,
     icon: Satellite,
@@ -38,20 +38,41 @@ export const allProjects: ProjectItem[] = [
     liveUrl: 'https://adityaroybardhan.gamer.gd',
     techStack: ['Python', 'NASA FIRMS', 'Computer Vision', 'Geospatial Data', 'FastAPI', 'Leaflet.js'],
     problem: 'How can satellite imagery and thermal sensors be used to reliably identify rapid wildfire events across large geographic regions without being overwhelmed by industrial false positives?',
-    whatIBuilt: 'A real-time satellite data ingestion and geospatial alerting pipeline combining NASA FIRMS (MODIS/VIIRS) feeds and NDMA data across 7 fire-prone zones in the Indian subcontinent.',
+    whatIBuilt: 'Developed a robust geospatial backend service and data pipeline, structuring clean RESTful APIs and optimizing data handling logic to process raw MODIS and VIIRS feeds with low latency.',
     myContribution: [
-      'Ingested and preprocessed raw MODIS and VIIRS satellite feeds from NASA Earthdata.',
-      'Developed confidence-scoring algorithms to isolate industrial thermal noise from actual wildfires.',
-      'Constructed a low-latency geospatial alert engine with visual map dashboards.',
-      'Designed alert dispatch pipelines tailored for integration with emergency response teams.'
+      'Ingested and preprocessed raw MODIS and VIIRS satellite feeds from NASA Earthdata into structured geospatial datasets.',
+      'Developed confidence-scoring algorithms and spatial filters to isolate industrial thermal flares from actual wildfires, attaining 94% classification precision.',
+      'Constructed a low-latency geospatial alert engine with visual map dashboards for immediate emergency notification.',
+      'Reduced critical wildfire alert latency from several hours to under 15 minutes across 7 high-risk zones in the Indian subcontinent.'
     ],
     results: 'Monitored 7 high-risk zones across India; achieved 94% classification precision and reduced fire alert latency from several hours to under 15 minutes.'
+  },
+  {
+    id: 'siddhant',
+    title: 'Siddhant — Ancient Indian Yantra Reconstruction Engine',
+    category: 'Systems',
+    tagline: 'Interactive 3D simulation & algorithmic astronomical reconstruction',
+    isFeatured: true,
+    image: siddhantImg,
+    icon: Cpu,
+    githubUrl: 'https://github.com/aditya2909rb',
+    liveUrl: 'https://github.com/aditya2909rb',
+    techStack: ['Three.js', 'React', 'TypeScript', 'SymPy', 'NetworkX', 'Computational Geometry'],
+    problem: 'Historical astronomical Yantras are described in archaic Sanskrit texts with complex geometric constraints that are difficult to verify or reconstruct mathematically.',
+    whatIBuilt: 'Architected and deployed an interactive simulation featuring custom rendering loops and real-time state management, minimizing frame drops and handling concurrent user/system inputs smoothly.',
+    myContribution: [
+      'Formalized archaic geometric constraints into symbolic mathematical representations using SymPy.',
+      'Applied directed graph dependency resolution algorithms via NetworkX to determine correct 3D geometric construction sequences.',
+      'Architected custom Three.js rendering loops with parametric sliders, allowing real-time interactive inspection of 15+ complex historical instruments at 60 FPS.',
+      'Coordinated technical architecture and deployment to achieve Grand Finalist standing at Smart India Hackathon (SIH) 2025.'
+    ],
+    results: 'Selected as Grand Finalist at Smart India Hackathon 2025; successfully reconstructed 15+ complex historical astronomical instruments with mathematical precision.'
   },
   {
     id: 'oncosml',
     title: 'OncoSML — Cancer Vaccine Workflow Research',
     category: 'AI/ML',
-    tagline: 'Computational cancer-vaccine workflow research',
+    tagline: 'Computational cancer-vaccine workflow research & automated MLOps',
     isFeatured: true,
     image: oncoImg,
     icon: Activity,
@@ -59,41 +80,20 @@ export const allProjects: ProjectItem[] = [
     liveUrl: 'https://github.com/aditya2909rb/sml-project',
     techStack: ['Python', 'cBioPortal API', 'PyTorch', 'GitHub Actions', 'Bioinformatics', 'MLOps'],
     problem: 'Genomic datasets and oncology literature expand continuously, leaving machine learning models in cancer-vaccine research quickly outdated without constant manual re-engineering.',
-    whatIBuilt: 'A self-maintaining machine learning pipeline for cancer-vaccine research that automates genomic data ingestion from cBioPortal and continuous literature updates from GitHub.',
+    whatIBuilt: 'Developed a robust backend service and automated data pipeline, structuring clean RESTful APIs and optimizing data handling logic to ensure reliable data flow and low latency.',
     myContribution: [
-      'Engineered automated genomic mutation data extraction from cBioPortal REST APIs.',
-      'Built a GitHub Actions CI/CD workflow that tracks new research findings and triggers retrains.',
-      'Implemented model validation barriers and regression guards before pushing updated weights.',
-      'Designed a real-time monitoring interface for genomic pipeline status.'
+      'Engineered automated genomic mutation data extraction and normalization from cBioPortal REST APIs.',
+      'Built a GitHub Actions CI/CD MLOps workflow that continuously tracks new research literature and triggers automated retraining.',
+      'Implemented model validation barriers and regression guards before serializing and pushing updated model weights.',
+      'Cut model refresh cycles from weeks of manual curation to automated hours, establishing a reproducible foundation for neoantigen analysis.'
     ],
     results: 'Cut model refresh cycle from weeks of manual curation to automated hours, creating a reproducible foundation for neoantigen and vaccine candidate exploration.'
-  },
-  {
-    id: 'satellite-change-detection',
-    title: 'Satellite Change Detection',
-    category: 'Computer Vision',
-    tagline: 'Computer vision for satellite imagery',
-    isFeatured: true,
-    image: satImg,
-    icon: Eye,
-    githubUrl: 'https://github.com/aditya2909rb',
-    liveUrl: 'https://github.com/aditya2909rb',
-    techStack: ['Python', 'PyTorch', 'OpenCV', 'GDAL', 'NASA Earthdata', 'U-Net'],
-    problem: 'Manual identification of environmental hazards and smoke plume boundaries from geostationary satellite feeds is too slow and error-prone for real-time disaster management.',
-    whatIBuilt: 'A pixel-level segmentation model trained on multispectral satellite feeds to detect smoke plumes and landscape transitions with automated ground-truth annotation tooling.',
-    myContribution: [
-      'Built custom semi-automated annotation pipeline using spectral signatures for ground-truth labeling.',
-      'Engineered data-cleaning filters for noisy, heterogeneous multispectral satellite bands.',
-      'Trained and evaluated customized U-Net segmentation models for diffuse smoke boundaries.',
-      'Benchmarked inference latency for continuous multi-gigabyte raster tiles.'
-    ],
-    results: 'Attained 0.82 mean IoU for diffuse smoke plume detection; automated the daily processing of 500GB+ of geostationary imagery.'
   },
   {
     id: 'demand-forecasting',
     title: 'Demand Forecasting & Dynamic Pricing',
     category: 'Data Science',
-    tagline: 'Real-time forecasting & dynamic pricing',
+    tagline: 'Real-time forecasting & dynamic pricing engine',
     isFeatured: true,
     image: demandImg,
     icon: TrendingUp,
@@ -101,35 +101,35 @@ export const allProjects: ProjectItem[] = [
     liveUrl: 'https://github.com/aditya2909rb',
     techStack: ['Python', 'XGBoost', 'LSTM', 'ONNX', 'Feature Engineering', 'FastAPI'],
     problem: 'Ride-sharing and on-demand delivery platforms face severe demand spikes, where standard models suffer from temporal lag and high inference latency.',
-    whatIBuilt: 'A high-frequency spatio-temporal demand forecasting model with dynamic pricing optimization capable of real-time sub-100ms inference.',
+    whatIBuilt: 'Developed a robust backend service and data pipeline, structuring clean RESTful APIs and optimizing data handling logic to deliver sub-100ms dynamic pricing inference.',
     myContribution: [
-      'Engineered over 200 temporal and spatial lag features from transactional data.',
-      'Built automated drift detection pipelines to catch covariate distribution shifts.',
-      'Optimized runtime performance via model quantization and ONNX runtime export.',
-      'Constructed a simulation environment to test dynamic surge pricing algorithms.'
+      'Engineered over 200 temporal and spatial lag features from high-velocity transaction streams.',
+      'Built automated drift detection pipelines to catch covariate distribution shifts and prevent price divergence.',
+      'Optimized runtime performance via model quantization and ONNX runtime export to maintain sub-100ms latency under simulated peak load.',
+      'Reduced forecasting MAPE by 18% compared to baseline regression models.'
     ],
     results: 'Reduced forecasting MAPE by 18% compared to baseline regression models; maintained sub-100ms inference latency under simulated peak load.'
   },
   {
-    id: 'siddhant',
-    title: 'Siddhant — Ancient Indian Yantra Reconstruction Engine',
-    category: 'Systems',
-    tagline: 'Algorithmic 3D reconstruction of astronomical instruments',
+    id: 'satellite-change-detection',
+    title: 'Satellite Change Detection',
+    category: 'Computer Vision',
+    tagline: 'Pixel-level segmentation for smoke plumes and environmental hazards',
     isFeatured: false,
-    image: siddhantImg,
-    icon: Cpu,
+    image: satImg,
+    icon: Eye,
     githubUrl: 'https://github.com/aditya2909rb',
     liveUrl: 'https://github.com/aditya2909rb',
-    techStack: ['Three.js', 'SymPy', 'NetworkX', 'TypeScript', 'React', 'Computational Geometry'],
-    problem: 'Historical astronomical Yantras are described in archaic Sanskrit texts with complex geometric constraints that are difficult to verify or reconstruct mathematically.',
-    whatIBuilt: 'A geometric computation engine that algorithmically reconstructs and visualizes ancient Indian astronomical instruments in interactive 3D web environments.',
+    techStack: ['Python', 'PyTorch', 'OpenCV', 'GDAL', 'NASA Earthdata', 'U-Net'],
+    problem: 'Manual identification of environmental hazards and smoke plume boundaries from geostationary satellite feeds is too slow and error-prone for real-time disaster management.',
+    whatIBuilt: 'Engineered a high-performance computer vision pipeline using PyTorch and U-Net, optimizing tensor processing and ground-truth annotation tooling to analyze large-scale raster tiles.',
     myContribution: [
-      'Formalized geometric descriptions into symbolic mathematical constraints using SymPy.',
-      'Applied graph dependency resolution algorithms via NetworkX to resolve construction order.',
-      'Created an interactive 3D rendering pipeline in Three.js with parametric control sliders.',
-      'Coordinated technical architecture and deployment for the Smart India Hackathon final evaluation.'
+      'Built a custom semi-automated annotation pipeline leveraging spectral reflectance signatures for ground-truth labeling.',
+      'Engineered data-cleaning filters for noisy, heterogeneous multispectral satellite bands.',
+      'Trained and evaluated customized U-Net segmentation models for diffuse smoke boundary identification.',
+      'Attained 0.82 mean IoU for diffuse smoke plume detection while automating daily processing of 500GB+ of geostationary imagery.'
     ],
-    results: 'Selected as Grand Finalist at Smart India Hackathon 2025; successfully reconstructed 15+ complex historical astronomical instruments with mathematical precision.'
+    results: 'Attained 0.82 mean IoU for diffuse smoke plume detection; automated the daily processing of 500GB+ of geostationary imagery.'
   },
   {
     id: 'agentic-ai-safety',
@@ -142,12 +142,12 @@ export const allProjects: ProjectItem[] = [
     liveUrl: 'https://github.com/aditya2909rb',
     techStack: ['Python', 'Local LLM', 'Raspberry Pi 5', 'Linux Cgroups', 'Systemd Sandboxing'],
     problem: 'When autonomous agents are granted tool use and filesystem permissions, how do resource constraints and permission boundaries hold up under extended unattended execution?',
-    whatIBuilt: 'An experimental evaluation harness running a local LLM agent on a Raspberry Pi 5 under strict Linux cgroup isolation and filesystem permission tracking.',
+    whatIBuilt: 'Architected and deployed an interactive evaluation harness featuring custom process monitoring loops and strict resource boundaries, isolating agent actions without system stalls.',
     myContribution: [
-      'Configured local quantized model inference with tool-calling capabilities on embedded hardware.',
-      'Implemented granular permission boundaries, audit logging, and hardware resource caps.',
+      'Configured local quantized model inference with tool-calling capabilities on constrained edge hardware.',
+      'Implemented granular permission boundaries, audit logging, and hardware resource caps via Linux cgroups.',
       'Evaluated multi-step autonomous behavior during a 4-hour unattended evaluation period.',
-      'Documented AI safety findings on process isolation, self-continuation loops, and approval gates.'
+      'Synthesized concrete recommendations for sandboxing, resource capping (CPU/RAM throttling), and strict human approval gates.'
     ],
     results: 'Synthesized concrete recommendations for sandboxing, resource capping (CPU/RAM throttling), and strict human approval gates in autonomous developer tooling.'
   },
@@ -162,11 +162,12 @@ export const allProjects: ProjectItem[] = [
     liveUrl: 'https://github.com/aditya2909rb',
     techStack: ['Python', 'Kafka', 'Scikit-learn', 'Redis', 'AES-256', 'Docker'],
     problem: 'Large-scale national identity verification streams generate millions of transactions per hour, requiring sub-second fraud anomaly detection without risking sensitive data leaks.',
-    whatIBuilt: 'A distributed stream analyzer with custom anomaly detection models, simulated stress datasets, and AES-256 encrypted storage.',
+    whatIBuilt: 'Developed a robust backend service and data pipeline, structuring clean event streams and optimizing anomaly detection logic to handle 10,000+ verification events per second.',
     myContribution: [
-      'Designed stream ingestion consumers capable of parsing 10,000+ verification events per second.',
+      'Designed stream ingestion consumers capable of parsing 10,000+ verification events per second with low latency.',
       'Crafted synthetic edge-case fraud datasets to improve recall on rare anomalous verification spikes.',
-      'Implemented end-to-end payload encryption and role-based access logs.'
+      'Implemented end-to-end payload encryption (AES-256) and tamper-proof role-based access logs.',
+      'Demonstrated sub-100ms detection latency on simulated high-concurrency fraud bursts with zero unencrypted data exposure.'
     ],
     results: 'Demonstrated sub-100ms detection latency on simulated high-concurrency fraud bursts with zero unencrypted data exposure.'
   }

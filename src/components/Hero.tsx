@@ -1,9 +1,60 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
-import { Github, Linkedin, ExternalLink, Download, ArrowDown, Sparkles, GraduationCap, Award, GitBranch } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
+import { Github, Linkedin, ExternalLink, Download, ArrowDown, Sparkles, GraduationCap, Award, GitBranch, Layers, Copy, Check, Code, Gamepad2, Brain, Compass } from 'lucide-react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, MeshDistortMaterial, Stars } from '@react-three/drei';
 import * as THREE from 'three';
+
+type FocusTrack = 'versatile' | 'fullstack' | 'game' | 'ai';
+
+interface ProfileLens {
+  id: FocusTrack;
+  label: string;
+  badge: string;
+  icon: React.ComponentType<{ size?: number; className?: string }>;
+  headline: string;
+  pitch: string;
+  tags: string[];
+}
+
+const focusProfiles: Record<FocusTrack, ProfileLens> = {
+  versatile: {
+    id: 'versatile',
+    label: 'Core / Versatile',
+    badge: 'Full-Stack • Game & 3D • AI/Data Science',
+    icon: Compass,
+    headline: 'Software Engineer & Systems Developer | Full-Stack • 3D Interactive • AI/ML',
+    pitch: 'Results-driven Software Engineer with a strong foundation in building high-performance web applications, interactive systems, and scalable backends. Adept at bridging clean UI/UX with robust engineering principles, leveraging TypeScript, modern system architectures, and practical machine learning pipelines to deliver seamless digital experiences.',
+    tags: ['Full-Stack Systems', 'Interactive 3D / WebGL', 'AI & Spatio-Temporal ML', 'High-Performance APIs']
+  },
+  fullstack: {
+    id: 'fullstack',
+    label: 'Full-Stack Engineer',
+    badge: 'Option A: Scalable Systems & Product Delivery',
+    icon: Code,
+    headline: 'Software & Full-Stack Engineer | Scalable Systems & Modern Web',
+    pitch: 'Results-driven Software Engineer with a strong foundation in building high-performance web applications, interactive systems, and scalable backends. Adept at bridging clean UI/UX with robust engineering principles, leveraging TypeScript, Next.js, and modern system architectures to deliver seamless digital experiences.',
+    tags: ['TypeScript & Next.js', 'High-Performance Web', 'Scalable Backends', 'RESTful APIs & UI/UX']
+  },
+  game: {
+    id: 'game',
+    label: 'Game & Interactive Dev',
+    badge: 'Option B: Performance, Logic & Real-Time Sync',
+    icon: Gamepad2,
+    headline: 'Technical / Game & Interactive Systems Developer | Real-Time State & 3D Logic',
+    pitch: 'Performance-focused Developer specializing in interactive systems, game logic, and real-time state synchronization. Combines a strong academic foundation in computer science with practical expertise in modern web stacks, 3D graphics logic, and performance optimization.',
+    tags: ['Three.js & WebGL', 'Custom Rendering Loops', 'Real-Time State Sync', 'Game Logic & Math']
+  },
+  ai: {
+    id: 'ai',
+    label: 'AI & Data Science',
+    badge: 'Computer Vision & Applied Machine Learning',
+    icon: Brain,
+    headline: 'Data Science & AI Engineer | Computer Vision • PyTorch • MLOps',
+    pitch: 'Applied AI & Data Science engineer with a rigorous academic foundation at IIT Guwahati and Grand Finalist recognition at SIH 2025. Specializes in building practical computer vision pipelines, real-time spatio-temporal forecasting, and robust MLOps workflows with measurable real-world precision.',
+    tags: ['Computer Vision (OpenCV)', 'PyTorch & U-Net', 'Spatio-Temporal ML', 'MLOps & CI/CD']
+  }
+};
 
 const DataCore = () => {
   const meshRef = useRef<THREE.Mesh>(null);
@@ -51,9 +102,20 @@ const DataCore = () => {
 };
 
 export const Hero = ({ onOpenResume }: { onOpenResume: () => void }) => {
+  const [activeTrack, setActiveTrack] = useState<FocusTrack>('versatile');
+  const [copied, setCopied] = useState(false);
+
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 150]);
   const opacity = useTransform(scrollY, [0, 350], [1, 0]);
+
+  const activeProfile = focusProfiles[activeTrack];
+
+  const handleCopySummary = () => {
+    navigator.clipboard.writeText(activeProfile.pitch);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2200);
+  };
 
   const scrollToProjects = () => {
     const el = document.getElementById('projects');
@@ -77,10 +139,10 @@ export const Hero = ({ onOpenResume }: { onOpenResume: () => void }) => {
           className="lg:col-span-7"
         >
           {/* Institution Subtitle */}
-          <div className="flex items-center gap-2 text-xs text-white/60 mb-5 font-mono">
+          <div className="flex items-center gap-2 text-xs text-white/60 mb-5 font-mono flex-wrap">
             <span className="text-[#00d4ff] font-semibold">IIT Guwahati</span>
             <span aria-hidden="true" className="text-white/30">·</span>
-            <span>B.Sc. (Hons.) Data Science & AI</span>
+            <span>B.Sc. (Hons.) Data Science &amp; AI</span>
             <span aria-hidden="true" className="text-white/30">·</span>
             <span className="text-emerald-400">SIH 2025 Grand Finalist</span>
           </div>
@@ -90,15 +152,89 @@ export const Hero = ({ onOpenResume }: { onOpenResume: () => void }) => {
             ADITYA ROY <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00d4ff] to-emerald-400">BARDHAN</span>
           </h1>
 
-          {/* Headline */}
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#00d4ff] via-sky-200 to-emerald-300 mb-4 tracking-tight">
-            Data Science &amp; AI | AI/ML • Computer Vision • Software Engineering
-          </h2>
-          
-          {/* Pitch */}
-          <p className="text-base sm:text-lg text-white/80 mb-8 max-w-2xl leading-relaxed">
-            I build practical AI systems, data-driven applications, and intelligent software — with interests spanning computer vision, LLMs, cybersecurity, and real-time systems.
-          </p>
+          {/* Role Lens Switcher / Track Selector */}
+          <div className="mb-5">
+            <div className="flex items-center justify-between gap-2 mb-2.5">
+              <span className="text-[11px] font-mono text-white/40 uppercase tracking-wider flex items-center gap-1.5">
+                <Layers size={13} className="text-[#00d4ff]" />
+                <span>Tailor Focus to Job Role:</span>
+              </span>
+              <span className="text-[11px] font-mono text-[#00d4ff]">
+                {activeProfile.badge}
+              </span>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              {(Object.keys(focusProfiles) as FocusTrack[]).map((trackKey) => {
+                const track = focusProfiles[trackKey];
+                const Icon = track.icon;
+                const isActive = activeTrack === trackKey;
+                return (
+                  <button
+                    key={trackKey}
+                    onClick={() => setActiveTrack(trackKey)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-all cursor-pointer ${
+                      isActive
+                        ? 'bg-[#00d4ff]/20 text-[#00d4ff] border border-[#00d4ff]/50 shadow-[0_0_12px_rgba(0,212,255,0.2)]'
+                        : 'bg-white/[0.03] text-white/60 hover:text-white hover:bg-white/[0.08] border border-white/10'
+                    }`}
+                  >
+                    <Icon size={13} />
+                    <span>{track.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Dynamic Headline */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTrack}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.25 }}
+            >
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#00d4ff] via-sky-200 to-emerald-300 mb-4 tracking-tight">
+                {activeProfile.headline}
+              </h2>
+              
+              {/* Dynamic Pitch / Professional Summary */}
+              <div className="relative mb-5 p-4 rounded-xl bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all">
+                <p className="text-sm sm:text-base text-white/85 leading-relaxed pr-10">
+                  {activeProfile.pitch}
+                </p>
+
+                <button
+                  onClick={handleCopySummary}
+                  title="Copy professional summary for job application / cover letter"
+                  className="absolute top-3 right-3 p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/60 hover:text-[#00d4ff] transition-all cursor-pointer"
+                  aria-label="Copy summary to clipboard"
+                >
+                  {copied ? <Check size={15} className="text-emerald-400" /> : <Copy size={15} />}
+                </button>
+
+                {copied && (
+                  <span className="absolute bottom-2 right-3 text-[10px] font-mono text-emerald-400">
+                    Copied to clipboard!
+                  </span>
+                )}
+              </div>
+
+              {/* Focus Skill Tags */}
+              <div className="flex flex-wrap gap-2 mb-8">
+                {activeProfile.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs font-mono px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/10 text-white/70"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          </AnimatePresence>
           
           {/* Primary CTAs */}
           <div className="flex flex-wrap items-center gap-3.5 mb-8">

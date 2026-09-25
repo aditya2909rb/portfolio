@@ -64,16 +64,31 @@ export const About = () => {
               </div>
             </div>
 
-            {/* Quick Profile Bio & References Note */}
+            {/* Quick Profile Bio & Capabilities */}
             <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/10 space-y-4">
               <div className="flex items-center gap-2 text-xs font-mono text-white/40 uppercase">
                 <MapPin size={13} className="text-[#00d4ff]" />
                 <span>Location: Kolkata, India · Open to Remote &amp; On-Site</span>
               </div>
 
-              <p className="text-xs text-white/70 leading-relaxed">
-                Focused on translating complex theoretical models into resilient software systems with clean documentation, reproducible benchmarks, and verifiable safety guarantees.
+              <p className="text-xs text-white/80 leading-relaxed">
+                Results-driven engineer combining an academic foundation in Data Science &amp; AI at IIT Guwahati with versatile execution across:
               </p>
+
+              <div className="space-y-2 text-xs">
+                <div className="flex items-start gap-2 text-white/70">
+                  <span className="text-[#00d4ff] font-bold">1.</span>
+                  <span><strong>Full-Stack &amp; Scalable Systems:</strong> High-performance web applications, TypeScript, and resilient API architectures.</span>
+                </div>
+                <div className="flex items-start gap-2 text-white/70">
+                  <span className="text-emerald-400 font-bold">2.</span>
+                  <span><strong>Game &amp; Interactive Dev:</strong> Real-time rendering loops, Three.js 3D state sync, and computational geometry.</span>
+                </div>
+                <div className="flex items-start gap-2 text-white/70">
+                  <span className="text-sky-300 font-bold">3.</span>
+                  <span><strong>AI &amp; Data Science:</strong> Real-time computer vision pipelines, spatio-temporal forecasting, and robust MLOps.</span>
+                </div>
+              </div>
 
               <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs text-white/50 font-mono">
                 <span className="flex items-center gap-1.5">
