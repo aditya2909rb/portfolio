@@ -13,7 +13,7 @@ export const Footer = () => {
               Aditya Roy Bardhan
             </h2>
             <p className="text-sm text-[#00d4ff] font-medium">
-              Data Science &amp; AI Student | AI/ML • Computer Vision • Software Engineering
+              Data Science &amp; AI | AI/ML • Computer Vision • Software Engineering
             </p>
             <p className="text-xs text-white/50 max-w-md leading-relaxed">
               Undergraduate at Indian Institute of Technology Guwahati building practical AI systems, computer vision pipelines, and intelligent software.

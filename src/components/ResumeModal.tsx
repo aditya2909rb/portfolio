@@ -110,7 +110,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                 </h1>
                 
                 <p className="text-base font-semibold text-[#007799] mb-3">
-                  Data Science &amp; AI Student | AI/ML • Computer Vision • Software Engineering
+                  Data Science &amp; AI | AI/ML • Computer Vision • Software Engineering
                 </p>
 
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-600 font-medium">

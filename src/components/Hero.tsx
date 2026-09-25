@@ -92,7 +92,7 @@ export const Hero = ({ onOpenResume }: { onOpenResume: () => void }) => {
 
           {/* Headline */}
           <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#00d4ff] via-sky-200 to-emerald-300 mb-4 tracking-tight">
-            Data Science &amp; AI Student | AI/ML • Computer Vision • Software Engineering
+            Data Science &amp; AI | AI/ML • Computer Vision • Software Engineering
           </h2>
           
           {/* Pitch */}
